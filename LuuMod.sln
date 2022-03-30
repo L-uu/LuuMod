@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.32228.343
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LuuMod", "LuuMod\LuuMod.csproj", "{AC93112A-1254-43A9-9DBC-24794E085C29}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{AC93112A-1254-43A9-9DBC-24794E085C29}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AC93112A-1254-43A9-9DBC-24794E085C29}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AC93112A-1254-43A9-9DBC-24794E085C29}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AC93112A-1254-43A9-9DBC-24794E085C29}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {76AAC9AE-7458-4FF9-A6DB-C1568C51B2AD}
+	EndGlobalSection
+EndGlobal
