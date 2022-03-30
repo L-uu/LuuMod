@@ -17,17 +17,17 @@ namespace LuuMod.Components
 			{
 				try
 				{
-					var user = QuickMenuEx.SelectedUserLocal.field_Private_IUser_0;
-					if (user == null) return;
-					var player = PlayerManager.field_Private_Static_PlayerManager_0.GetPlayer(user.prop_String_0);
-					var apiavatar = player.GetApiAvatar();
-					if (apiavatar == null) return;
-					if (apiavatar.releaseStatus != "public") return;
-					Transform screens = GameObject.Find("UserInterface/MenuContent/Screens/").transform;
-					PageAvatar PageAvatar = screens.Find("Avatar").GetComponent<PageAvatar>();
+					var User = QuickMenuEx.SelectedUserLocal.field_Private_IUser_0;
+					if (User == null) return;
+					var Player = PlayerManager.field_Private_Static_PlayerManager_0.GetPlayer(User.prop_String_0);
+					var Apiavatar = Player.GetApiAvatar();
+					if (Apiavatar == null) return;
+					if (Apiavatar.releaseStatus != "public") return;
+					Transform Screens = GameObject.Find("UserInterface/MenuContent/Screens/").transform;
+					PageAvatar PageAvatar = Screens.Find("Avatar").GetComponent<PageAvatar>();
 					PageAvatar.field_Public_SimpleAvatarPedestal_0.field_Internal_ApiAvatar_0 = new ApiAvatar
 					{
-						id = apiavatar.id
+						id = Apiavatar.id
 					};
 					PageAvatar.ChangeToSelectedAvatar();
 				}
