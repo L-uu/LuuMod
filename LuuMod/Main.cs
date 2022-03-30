@@ -1,6 +1,5 @@
-﻿using LuuMod.Components;
+﻿using LuuMod.Managers;
 using MelonLoader;
-using ReMod.Core.Managers;
 using System.Collections;
 
 [assembly: MelonInfo(typeof(LuuMod.Main), "LuuMod", "1", "Luu")]
@@ -10,10 +9,10 @@ namespace LuuMod
 {
 	class Main : MelonMod
 	{
-		private static UiManager _UiManager;
 		public override void OnApplicationStart()
 		{
-			Update.UpdateMod();
+			UpdateManager.UpdateMod();
+			UpdateManager.UpdateCore();
 			MelonCoroutines.Start(WaitForUiManagerInit());
 		}
 
@@ -27,8 +26,7 @@ namespace LuuMod
 		private void OnUiManagerInit()
 		{
 			LoggerInstance.Msg("Initializing UI...");
-			_UiManager = new UiManager("LuuMod", null, true);
-			TargetMenuComponents.OnUiManagerInit(_UiManager);
+			UiManager.OnUiManagerInit();
 		}
 	}
 }

@@ -20,6 +20,7 @@
     <Reference Include="ReMod.Core">
       <HintPath>E:\Steam\steamapps\common\VRChat\ReMod.Core.dll</HintPath>
     </Reference>
+    <Reference Include="System.Windows.Forms" />
     <Reference Include="UnhollowerBaseLib">
       <HintPath>E:\Steam\steamapps\common\VRChat\MelonLoader\Managed\UnhollowerBaseLib.dll</HintPath>
     </Reference>
