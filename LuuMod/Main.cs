@@ -1,4 +1,5 @@
-﻿using MelonLoader;
+﻿using LuuMod.Components;
+using MelonLoader;
 using ReMod.Core.Managers;
 using System.Collections;
 
@@ -27,6 +28,7 @@ namespace LuuMod
 		{
 			LoggerInstance.Msg("Initializing UI...");
 			_UiManager = new UiManager("LuuMod", null, true);
+			TargetMenuComponents.OnUiManagerInit(_UiManager);
 		}
 	}
 }
