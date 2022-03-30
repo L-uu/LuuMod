@@ -10,12 +10,9 @@ namespace LuuMod
 	{
 		public static void UpdateMod()
 		{
-			MelonLogger.Msg("Checking for LuuMod and updating if necessary.");
+			MelonLogger.Msg("Checking for updates...");
 			byte[] Bytes = null;
-			if (File.Exists("Mods/LuuMod.dll"))
-			{
-				Bytes = File.ReadAllBytes("Mods/LuuMod.dll");
-			}
+			Bytes = File.ReadAllBytes("Mods/LuuMod.dll");
 			var Wc = new WebClient
 			{
 				Headers =
@@ -33,43 +30,22 @@ namespace LuuMod
 			{
 				MelonLogger.Msg("Failed to download LuuMod, you might encounter issues. " + ex.ToString());
 			}
-			if (Bytes == null)
+			if (LatestBytes != null)
 			{
-				if (LatestBytes == null)
+				var sha256 = SHA256.Create();
+				var LatestHash = ComputeHash(sha256, LatestBytes);
+				var CurrentHash = ComputeHash(sha256, Bytes);
+				if (LatestHash != CurrentHash)
 				{
-					MelonLogger.Error("Failed to download LuuMod, and file doesn't exist. The mod won't work.");
-					return;
-				}
-				MelonLogger.Msg("LuuMod not found, will try and download now.");
-				Bytes = LatestBytes;
-				try
-				{
-					File.WriteAllBytes("Mods/LuuMod.dll", Bytes);
-				}
-				catch (IOException ex)
-				{
-					MelonLogger.Warning("Failed to write LuuMod to disk, you might encounter issues. " + ex.ToString());
-				}
-			}
-			else
-			{
-				if (LatestBytes != null)
-				{
-					var sha256 = SHA256.Create();
-					var LatestHash = ComputeHash(sha256, LatestBytes);
-					var CurrentHash = ComputeHash(sha256, Bytes);
-					if (LatestHash != CurrentHash)
+					MelonLogger.Msg("Updating LuuMod...");
+					Bytes = LatestBytes;
+					try
 					{
-						MelonLogger.Msg("Updating LuuMod");
-						Bytes = LatestBytes;
-						try
-						{
-							File.WriteAllBytes("Mods/LuuMod.dll", Bytes);
-						}
-						catch (IOException ex)
-						{
-							MelonLogger.Warning("Failed to write LuuMod to disk. You might encounter errors. " + ex.ToString());
-						}
+						File.WriteAllBytes("Mods/LuuMod.dll", Bytes);
+					}
+					catch (IOException ex)
+					{
+						MelonLogger.Warning("Failed to write LuuMod to disk. You might encounter errors. " + ex.ToString());
 					}
 				}
 			}
