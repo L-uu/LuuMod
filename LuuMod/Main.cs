@@ -1,7 +1,6 @@
 ﻿using LuuMod.Managers;
 using MelonLoader;
 using System.Collections;
-using System.IO;
 
 [assembly: MelonInfo(typeof(LuuMod.Main), "LuuMod", "1", "Luu")]
 [assembly: MelonGame("VRChat", "VRChat")]
@@ -12,8 +11,6 @@ namespace LuuMod
 	{
 		public override void OnApplicationStart()
 		{
-			UpdateManager.UpdateMod();
-			if (!File.Exists("Mods/ReModCE.Loader.dll")) UpdateManager.UpdateCore();
 			MelonCoroutines.Start(WaitForUiManagerInit());
 		}
 
