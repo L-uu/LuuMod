@@ -13,6 +13,7 @@ namespace LuuMod.Components
 	{
 		public static void OnUiManagerInit(UiManager _UiManager)
 		{
+			//FORCE CLONE
 			_UiManager.TargetMenu.AddButton("Force Clone", "Force Clone this user's PUBLIC AVATAR.", () =>
 			{
 				try
@@ -36,6 +37,29 @@ namespace LuuMod.Components
 					MelonLogger.Error(ex.ToString());
 				}
 			}, null);
+
+			//LOCAL BLOCK
+			_UiManager.TargetMenu.AddButton("Local Block", "Block this user client-side only.", () =>
+			{
+				try
+				{
+					var User = QuickMenuEx.SelectedUserLocal.field_Private_IUser_0;
+					if (User == null) return;
+					var Player = PlayerManager.field_Private_Static_PlayerManager_0.GetPlayer(User.prop_String_0);
+					if (Player.gameObject.activeSelf)
+					{
+						Player.gameObject.SetActive(false);
+					}
+					else
+					{
+						Player.gameObject.SetActive(true);
+					}
+				}
+				catch (Exception ex)
+				{
+					MelonLogger.Error(ex.ToString());
+				}
+			});
 		}
 	}
 }
