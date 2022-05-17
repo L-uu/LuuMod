@@ -9,6 +9,7 @@ namespace LuuMod.Managers
 		{
 			_UiManager = new ReMod.Core.Managers.UiManager("LuuMod", null, true);
 			TargetMenuComponents.OnUiManagerInit(_UiManager);
+			QuickMenuComponents.OnUiManagerInit(_UiManager);
 		}
 	}
 }
