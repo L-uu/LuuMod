@@ -60,6 +60,22 @@ namespace LuuMod.Components
 					MelonLogger.Error(ex.ToString());
 				}
 			});
+
+			//TELEPORT
+			_UiManager.TargetMenu.AddButton("Teleport", "Teleport to this user.", () =>
+			{
+				try
+				{
+					var User = QuickMenuEx.SelectedUserLocal.field_Private_IUser_0;
+					if (User == null) return;
+					var Player = PlayerManager.field_Private_Static_PlayerManager_0.GetPlayer(User.prop_String_0);
+					VRCPlayer.field_Internal_Static_VRCPlayer_0.transform.position = Player.transform.position;
+				}
+				catch (Exception ex)
+				{
+					MelonLogger.Error(ex.ToString());
+				}
+			}, null);
 		}
 	}
 }
