@@ -28,14 +28,21 @@ namespace LuuMod.Components
 		{
 			while (true)
 			{
-				if (InfiniteJumpEnabled && Input.GetAxis("Jump") != 0f)
+				if (InfiniteJumpEnabled)
 				{
-					if (!VRCPlayer.field_Internal_Static_VRCPlayer_0.field_Private_VRCPlayerApi_0.IsPlayerGrounded())
+					if (VRCInputManager.Method_Public_Static_VRCInput_String_0("Jump").prop_Boolean_2
+						&& RoomManager.field_Internal_Static_ApiWorld_0 != null
+						&& !VRCPlayer.field_Internal_Static_VRCPlayer_0.field_Private_VRCPlayerApi_0.IsPlayerGrounded())
 					{
-						GameObject Plane = GameObject.CreatePrimitive(PrimitiveType.Plane);
-						Plane.GetComponent<Renderer>().enabled = false;
-						Plane.transform.position = VRCPlayer.field_Internal_Static_VRCPlayer_0.transform.position;
-						Object.Destroy(Plane, 0.5f);
+						try
+						{
+							Vector3 PlayerVelocity = VRCPlayer.field_Internal_Static_VRCPlayer_0.field_Private_VRCPlayerApi_0.GetVelocity();
+							PlayerVelocity.y = 3f;
+							VRCPlayer.field_Internal_Static_VRCPlayer_0.field_Private_VRCPlayerApi_0.SetVelocity(PlayerVelocity);
+						}
+						catch
+						{
+						}
 					}
 				}
 				yield return new WaitForSeconds(0.1f);
